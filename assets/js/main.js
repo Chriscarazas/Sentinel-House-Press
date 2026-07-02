@@ -181,3 +181,62 @@ if (toggle && nav) {
   toggle.addEventListener('click', () => document.body.classList.toggle('nav-open', toggle.getAttribute('aria-expanded') === 'true'));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
 }
+
+
+// V10: accessible navigation, stable focus handling, and delayed mobile CTA.
+(() => {
+  const menuButton = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.site-nav');
+  if (menuButton && menu) {
+    const closeMenu = ({ restoreFocus = false } = {}) => {
+      menu.classList.remove('open');
+      document.body.classList.remove('nav-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+      if (restoreFocus) menuButton.focus();
+    };
+    const openMenu = () => {
+      menu.classList.add('open');
+      document.body.classList.add('nav-open');
+      menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-label', 'Close navigation');
+      const first = menu.querySelector('a');
+      window.setTimeout(() => first?.focus(), 30);
+    };
+    // Normalize any state produced by earlier listeners.
+    menuButton.addEventListener('click', (event) => {
+      event.stopImmediatePropagation();
+      const shouldOpen = menuButton.getAttribute('aria-expanded') !== 'true';
+      shouldOpen ? openMenu() : closeMenu();
+    }, true);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.classList.contains('open')) closeMenu({ restoreFocus: true });
+      if (event.key !== 'Tab' || !menu.classList.contains('open')) return;
+      const focusable = [menuButton, ...menu.querySelectorAll('a[href],button:not([disabled])')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    window.matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
+  }
+
+  if (!document.querySelector('.mobile-manuscript-cta') && document.body.classList.contains('sentinel-site')) {
+    const cta = document.createElement('a');
+    cta.className = 'button signal mobile-manuscript-cta';
+    cta.href = 'contact.html';
+    cta.textContent = 'Tell us about your manuscript';
+    cta.setAttribute('aria-label', 'Tell Sentinel House Press about your manuscript');
+    document.body.appendChild(cta);
+    const hero = document.querySelector('.v7-hero, .chapter-hero');
+    const update = () => {
+      if (!window.matchMedia('(max-width: 640px)').matches || !hero) { cta.classList.remove('is-visible'); return; }
+      const pastHero = window.scrollY > Math.max(320, hero.offsetHeight * .72);
+      const nearFooter = window.innerHeight + window.scrollY > document.documentElement.scrollHeight - 550;
+      cta.classList.toggle('is-visible', pastHero && !nearFooter);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+})();

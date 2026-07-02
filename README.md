@@ -79,3 +79,32 @@ This revision adds an editorial chapter rail, a full-screen mobile index, improv
 ## Plymouth location page
 
 `plymouth.html` presents Sentinel House Press as proudly based in Plymouth, Massachusetts, known as America’s Hometown. It includes original vintage-style landmark artwork and contextual language recognizing Plymouth’s layered Wampanoag, English, civic, and contemporary histories.
+
+
+## V10 responsive architecture
+
+This edition consolidates the live layout into a permanent `sentinel-site` system. Historical body classes from V4 through V7 were removed. The final CSS adds standard media frames, a stable grid-based hero, a single breakpoint hierarchy at 1199px, 900px, 640px, and 380px, protected 3:5 book-cover proportions, simplified mobile artwork, accessible menu focus handling, Escape-to-close behavior, and a delayed mobile manuscript CTA.
+
+Test before deployment at 320, 375, 390, 430, 768, 1024, 1280, and 1600 pixels, plus browser zoom at 200 percent.
+
+
+## V10 typography system
+
+This build uses a three-family system:
+
+- Bodoni Moda Variable for display typography and conceptual headlines
+- Newsreader Variable for body copy, essays, case studies, and literary italics
+- Manrope Variable for navigation, buttons, forms, facts, prices, and metadata
+
+The final CSS layer adds a fluid type scale, improved reading measures, sentence-case buttons, tabular numerals for metrics, old-style numerals for prose, page-specific typographic treatments, and responsive typography down to 320px. Older editorial version classes were removed from every page body.
+
+
+## V11 responsive and nautical edition
+- Removed obsolete version-scoped CSS selectors.
+- Added stable media wrappers and protected 3:5 book-cover behavior.
+- Added responsive image srcsets for Plymouth artwork.
+- Added high-resolution sharpened Plymouth assets.
+- Added original vector nautical details: compass rose, rope divider, anchor seal, chart grid, and shipwright plan.
+- Added a shipbuilding and maritime-craft section to the Plymouth page.
+- Consolidated final responsive behavior at 1199px, 900px, 640px, and 380px.
+- Simplified visual transforms on tablet and mobile.
