@@ -346,3 +346,200 @@ body.home-page .v7-fit-no li { color: #fff !important; border-color: rgba(255,25
   .page-studio-project-assessment .studio-form-grid { grid-template-columns: 1fr; }
   body.home-page .v7-manuscript p { font-size: clamp(2.8rem, 12vw, 4.6rem); margin-top: 3rem; }
 }
+
+
+/* V19 LIVE FIXES: header, contrast, fit panel, and CTA cleanup */
+:root {
+  --v19-case: #5d0b14;
+  --v19-rights: #102028;
+  --v19-black: #0d0e0d;
+}
+
+/* Header: uploaded logo, compact division switcher, eight visible numbered links. */
+.site-header .nav-shell {
+  width: min(100% - 2rem, 1560px) !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: clamp(1rem, 2vw, 2rem) !important;
+  align-items: center !important;
+  min-height: 78px !important;
+}
+.site-header .brand-cluster {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: .55rem !important;
+  min-width: max-content !important;
+}
+.site-header a.brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  padding: 0 !important;
+}
+.site-header .brand-full-logo {
+  display: block !important;
+  width: clamp(132px, 11vw, 166px) !important;
+  height: auto !important;
+  aspect-ratio: 573 / 253 !important;
+  object-fit: contain !important;
+}
+.site-header .division-switcher {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  gap: .38rem !important;
+  white-space: nowrap !important;
+  font-size: .66rem !important;
+  letter-spacing: .1em !important;
+}
+.site-header .site-nav {
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+.site-header .nav-primary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: clamp(.55rem, .9vw, 1.05rem) !important;
+  min-width: 0 !important;
+}
+.site-header .nav-primary a {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: .28rem !important;
+  padding: .8rem 0 !important;
+  white-space: nowrap !important;
+  font-family: var(--font-ui, Manrope, sans-serif) !important;
+  font-size: clamp(.69rem, .72vw, .82rem) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: -.01em !important;
+}
+.site-header .nav-primary a::before {
+  content: attr(data-chapter) !important;
+  position: static !important;
+  transform: none !important;
+  color: var(--v7-crimson, #b71828) !important;
+  font-size: .62rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .06em !important;
+}
+.site-header .header-cta,
+.site-header a.button,
+.site-header a.signal { display: none !important; }
+
+/* Founding case study: solid field, no low-opacity overlays or reveal residue. */
+body.home-page section.v7-case {
+  background: var(--v19-case) !important;
+  background-image: none !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+body.home-page section.v7-case::before,
+body.home-page section.v7-case::after { display: none !important; }
+body.home-page section.v7-case * { text-shadow: none !important; }
+body.home-page section.v7-case .v7-case-copy,
+body.home-page section.v7-case .reveal,
+body.home-page section.v7-case .is-visible {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+body.home-page section.v7-case .eyebrow { color: #ffd6cf !important; opacity: 1 !important; }
+body.home-page section.v7-case h2,
+body.home-page section.v7-case h2 * { color: #fff !important; opacity: 1 !important; }
+body.home-page section.v7-case h2 span { color: #ffaaa2 !important; }
+body.home-page section.v7-case .v7-case-copy > p { color: #fff4f1 !important; opacity: 1 !important; }
+body.home-page section.v7-case .v7-facts { border-color: rgba(255,255,255,.48) !important; }
+body.home-page section.v7-case .v7-facts div { border-color: rgba(255,255,255,.38) !important; }
+body.home-page section.v7-case .v7-facts dt { color: #ffb1aa !important; opacity: 1 !important; }
+body.home-page section.v7-case .v7-facts dd { color: #fff !important; opacity: 1 !important; }
+
+/* Author control: solid blue-black and fully opaque copy. */
+body.home-page section.v7-rights {
+  background: var(--v19-rights) !important;
+  background-image: none !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+body.home-page section.v7-rights::before { display: none !important; }
+body.home-page section.v7-rights .reveal,
+body.home-page section.v7-rights .is-visible,
+body.home-page section.v7-rights .container {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+body.home-page section.v7-rights .eyebrow { color: #ffb1aa !important; opacity: 1 !important; }
+body.home-page section.v7-rights h2,
+body.home-page section.v7-rights h2 * { color: #fff !important; opacity: 1 !important; }
+body.home-page section.v7-rights h2 span { color: #ffaaa2 !important; }
+body.home-page section.v7-rights p:last-child { color: #eef7f8 !important; opacity: 1 !important; }
+
+/* Poor-fit panel: black field behind white copy. */
+body.home-page .v7-fit-no {
+  background: var(--v19-black) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+body.home-page .v7-fit-no > span { color: #ffb1aa !important; opacity: 1 !important; }
+body.home-page .v7-fit-no li { color: #fff !important; border-color: rgba(255,255,255,.35) !important; opacity: 1 !important; }
+
+/* Decorative manuscript phrase removed in HTML. Keep the object clean. */
+body.home-page .v7-manuscript p { display: none !important; }
+
+/* Bottom inquiry modules are removed in HTML; defensive hiding prevents stale fragments. */
+.v7-final,
+.v7-commercial-cta,
+.studio-final,
+section:has(> .container.cta-panel) { display: none !important; }
+
+@media (max-width: 1180px) {
+  .site-header .nav-shell {
+    grid-template-columns: minmax(0,1fr) auto !important;
+    min-height: 72px !important;
+  }
+  .site-header .nav-toggle { display: inline-grid !important; }
+  .site-header .site-nav {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999 !important;
+    display: none !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: max(5.5rem, env(safe-area-inset-top)) 1.4rem max(2rem, env(safe-area-inset-bottom)) !important;
+    background: #111210 !important;
+  }
+  body.nav-open .site-header .site-nav,
+  .site-header .site-nav.open { display: block !important; }
+  .site-header .nav-primary {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .site-header .nav-primary a {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 1rem 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.18) !important;
+    color: #fff !important;
+    font-family: var(--font-display, serif) !important;
+    font-size: clamp(1.8rem, 8vw, 3.6rem) !important;
+    line-height: 1 !important;
+    white-space: normal !important;
+  }
+  .site-header .nav-primary a::before {
+    min-width: 2.2rem !important;
+    color: #ffaaa2 !important;
+    font-family: var(--font-ui, sans-serif) !important;
+    font-size: .72rem !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header .brand-full-logo { width: 118px !important; }
+  .site-header .division-switcher { font-size: .58rem !important; }
+  .site-header .brand-cluster { gap: .4rem !important; }
+}
