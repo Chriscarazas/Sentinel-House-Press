@@ -174,3 +174,12 @@
     } else overture.remove();
   }
 })();
+
+/* V20 Studio report comparison */
+document.querySelectorAll('[data-report-compare]').forEach((comparison) => {
+  const range = comparison.querySelector('.compare-range');
+  if (!range) return;
+  const update = () => comparison.style.setProperty('--compare', `${range.value}%`);
+  range.addEventListener('input', update);
+  update();
+});
