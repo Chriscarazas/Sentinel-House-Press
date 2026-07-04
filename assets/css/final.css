@@ -1,0 +1,132 @@
+/* Sentinel House V16 final stabilization layer. Mobile first, content first. */
+:root {
+  --content-narrow: 42rem;
+  --content-reading: 68ch;
+  --tap: 48px;
+}
+html { overflow-x: clip; scroll-behavior: smooth; }
+body { overflow-x: clip; text-rendering: optimizeLegibility; }
+main, section, header, footer { min-width: 0; }
+img, svg, video, iframe { max-width: 100%; height: auto; }
+figure { min-width: 0; }
+:where(p, li) { overflow-wrap: anywhere; }
+:where(h1,h2,h3,h4) { text-wrap: balance; overflow-wrap: normal; hyphens: none; }
+:where(p) { text-wrap: pretty; }
+.prose, .chapter-copy, .v7-final-grid > div, .studio-copy { min-width: 0; }
+.prose p, .chapter-copy p, .studio-copy p, .v7-final p { max-width: var(--content-reading); }
+
+/* Consistent controls */
+.button, button, [role="button"] {
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+}
+.button:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Stable media */
+.media-frame, .plymouth-landmark-grid figure, .plymouth-hero-art { overflow: hidden; }
+.media-frame img, .plymouth-landmark-grid img, .plymouth-hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.plymouth-landmark-grid figure { display: grid; grid-template-rows: auto 1fr; }
+.plymouth-landmark-grid figure img { aspect-ratio: 4 / 3; }
+.plymouth-landmark-grid figcaption { position: static; }
+
+/* Mobile header and menu */
+.site-header { width: 100%; }
+.nav-shell { min-height: 72px; }
+.brand-cluster { min-width: 0; }
+.brand-wordmark strong { line-height: 1; }
+.nav-toggle { width: 48px; height: 48px; flex: 0 0 48px; }
+.site-nav {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+body.nav-open { overflow: hidden; }
+@media (max-width: 900px) {
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: calc(92px + env(safe-area-inset-top)) clamp(1rem, 5vw, 2rem) calc(2rem + env(safe-area-inset-bottom));
+    max-height: 100dvh;
+  }
+  .site-nav .nav-primary { display: grid; gap: 0; }
+  .site-nav .nav-primary a {
+    font-size: clamp(2rem, 11vw, 4rem);
+    line-height: .96;
+    padding: .65rem 0;
+    min-height: 64px;
+  }
+  .site-nav .nav-secondary { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .5rem 1rem; margin-top: 1rem; }
+  .site-nav .nav-secondary a { min-height: 44px; display:flex; align-items:center; }
+  .site-nav .header-cta { width: 100%; margin-top: 1rem; }
+  .nav-toggle { position: relative; z-index: 1001; }
+  .division-switcher { display: inline-flex !important; }
+}
+@media (max-width: 430px) {
+  .brand-wordmark { display: none; }
+  .site-nav .nav-primary a { font-size: clamp(1.8rem, 10vw, 3.1rem); }
+  .site-nav .nav-secondary { grid-template-columns: 1fr; }
+}
+
+/* Cards and homepage service blocks are always legible */
+.v7-path-grid { align-items: stretch; }
+.v7-path { min-width: 0; }
+.v7-path:nth-child(1), .v7-path:nth-child(2) { background: var(--v7-ivory, #f4ecdf); color: var(--v7-ink, #161616); }
+.v7-path:nth-child(3) { background: #171716; color: #f7f0e5; }
+.v7-path:nth-child(4) { background: var(--v7-crimson, #9e1722); color: #fff; }
+.v7-path :where(h2,h3,p,a,span,b) { color: inherit; }
+.v7-path:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(0,0,0,.12); }
+
+/* Reading rhythm */
+section { scroll-margin-top: 88px; }
+:where(.section,.chapter-hero,.v7-final,.plymouth-place,.plymouth-landmarks) { padding-block: clamp(3rem, 8vw, 7rem); }
+:where(h1) { font-size: clamp(2.6rem, 8vw, 7.5rem); line-height: .94; }
+:where(h2) { font-size: clamp(2rem, 5vw, 4.8rem); line-height: 1; }
+:where(h3) { line-height: 1.15; }
+:where(p,li) { line-height: 1.68; }
+.container { width: min(100% - 2rem, 84rem); }
+
+/* Contact email panels */
+.inquiry-prompt-list { display: grid; gap: .75rem; padding-left: 1.2rem; }
+.form-card { min-width: 0; }
+.form-card .button { width: 100%; }
+
+/* Mobile composition */
+@media (max-width: 767px) {
+  .container { width: min(100% - 1.25rem, 84rem); }
+  .chapter-grid, .assessment-grid, .plymouth-contact-grid, .plymouth-place-grid, .v7-final-grid { grid-template-columns: 1fr !important; }
+  .chapter-visual, .submission-room { min-height: auto !important; }
+  .plymouth-landmark-grid { grid-template-columns: 1fr !important; }
+  .v7-path-grid { grid-template-columns: 1fr !important; }
+  .v7-path { min-height: auto !important; padding: 1.5rem !important; }
+  .mobile-manuscript-cta { left: .75rem; right: .75rem; width: auto; bottom: calc(.75rem + env(safe-area-inset-bottom)); }
+  .chapter-rail, .scroll-spine { display: none !important; }
+}
+
+/* Large screen discipline */
+@media (min-width: 1440px) {
+  .container { width: min(100% - 5rem, 90rem); }
+  .prose, .chapter-copy { max-width: 52rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

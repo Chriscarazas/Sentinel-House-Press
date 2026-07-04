@@ -1,0 +1,42 @@
+{
+  "source_archive": "Plymouth_Victorian_Images_6.zip",
+  "processed_format": "Responsive WebP at 640, 1200, and 1448 pixels wide",
+  "images": [
+    {
+      "source": "01_Plymouth_Town_Square.png",
+      "new_base": "assets/img/victorian/plymouth-town-square",
+      "primary_use": "Plymouth landmark gallery",
+      "alt": "Victorian-style illustration of Plymouth Town Square"
+    },
+    {
+      "source": "02_Pilgrim_Hall_Court_Street.png",
+      "new_base": "assets/img/victorian/pilgrim-hall-court-street",
+      "primary_use": "Plymouth landmark gallery and Guidance page",
+      "alt": "Victorian-style illustration of Pilgrim Hall on Court Street"
+    },
+    {
+      "source": "03_Plymouth_Harbor_Town_Wharf.png",
+      "new_base": "assets/img/victorian/plymouth-harbor-town-wharf",
+      "primary_use": "Homepage, About, Services, Contact, and Plymouth hero",
+      "alt": "Victorian-style illustration of Plymouth Harbor and Town Wharf"
+    },
+    {
+      "source": "04_Plymouth_Rock_Portico.png",
+      "new_base": "assets/img/victorian/plymouth-rock-portico",
+      "primary_use": "Plymouth landmark gallery and Guidance page",
+      "alt": "Victorian-style illustration of Plymouth Rock and its portico"
+    },
+    {
+      "source": "05_Burial_Hill_Overlook.png",
+      "new_base": "assets/img/victorian/burial-hill-overlook",
+      "primary_use": "Plymouth landmark gallery",
+      "alt": "Victorian-style illustration of Burial Hill overlooking Plymouth"
+    },
+    {
+      "source": "06_Leyden_Street.png",
+      "new_base": "assets/img/victorian/leyden-street",
+      "primary_use": "Plymouth landmark gallery and Process page",
+      "alt": "Victorian-style illustration of Leyden Street in Plymouth"
+    }
+  ]
+}
