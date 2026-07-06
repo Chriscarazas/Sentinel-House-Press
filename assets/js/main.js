@@ -93,56 +93,11 @@
     revealNodes.forEach((node) => revealObserver.observe(node));
   }
 
-  /* Desktop-only editorial chapter rail. */
-  const sections = [...document.querySelectorAll('main [data-section]')];
-  if (sections.length >= 3 && window.matchMedia('(min-width: 1180px)').matches) {
-    const rail = document.createElement('nav');
-    rail.className = 'chapter-rail';
-    rail.setAttribute('aria-label', 'On this page');
-    sections.forEach((section, index) => {
-      if (!section.id) section.id = `chapter-${index + 1}`;
-      const link = document.createElement('a');
-      link.href = `#${section.id}`;
-      link.innerHTML = `<span>${section.dataset.section || `Section ${index + 1}`}</span><i></i>`;
-      rail.appendChild(link);
-    });
-    body.appendChild(rail);
-    if ('IntersectionObserver' in window) {
-      const railLinks = [...rail.querySelectorAll('a')];
-      const sectionObserver = new IntersectionObserver((entries) => {
-        const active = entries.filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!active) return;
-        railLinks.forEach((link) => link.classList.toggle('active', link.hash === `#${active.target.id}`));
-      }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5] });
-      sections.forEach((section) => sectionObserver.observe(section));
-    }
-  }
+  /* V26: chapter rail removed across the site. */
 
   /* V23: static art direction replaces pointer tilt for steadier reading. */
 
-  /* Delayed mobile conversion action. */
-  if (body.classList.contains('sentinel-site')) {
-    const isStudio = body.classList.contains('studio-site');
-    const cta = document.createElement('a');
-    cta.className = `button ${isStudio ? 'studio-button' : 'signal'} mobile-manuscript-cta`;
-    cta.href = isStudio ? 'project-assessment.html' : 'contact.html';
-    cta.textContent = isStudio ? 'Send a project brief' : 'Send a project inquiry';
-    body.appendChild(cta);
-    const hero = document.querySelector('.v7-hero, .studio-hero, .chapter-hero');
-    const updateMobileCta = () => {
-      if (!window.matchMedia('(max-width: 640px)').matches || !hero) {
-        cta.classList.remove('is-visible');
-        return;
-      }
-      const pastHero = window.scrollY > Math.max(300, hero.offsetHeight * 0.72);
-      const nearFooter = window.innerHeight + window.scrollY > document.documentElement.scrollHeight - 500;
-      cta.classList.toggle('is-visible', pastHero && !nearFooter);
-    };
-    updateMobileCta();
-    window.addEventListener('scroll', updateMobileCta, { passive: true });
-    window.addEventListener('resize', updateMobileCta);
-  }
+  /* V26: floating mobile project CTA removed across the site. */
 
   /* Brief internal page transition, skipped for reduced motion and modifier clicks. */
   if (!reducedMotion.matches) {
