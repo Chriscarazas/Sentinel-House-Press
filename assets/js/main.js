@@ -6,7 +6,7 @@
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.site-nav');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const desktopNav = window.matchMedia('(min-width: 901px)');
+  const desktopNav = window.matchMedia('(min-width: 1241px)');
 
   document.querySelectorAll('[data-year]').forEach((node) => {
     node.textContent = String(new Date().getFullYear());
@@ -36,6 +36,14 @@
       toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
     });
     nav.querySelectorAll('a[href]').forEach((link) => link.addEventListener('click', () => closeMenu()));
+    nav.addEventListener('click', (event) => {
+      if (event.target === nav) closeMenu(true);
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (!nav.classList.contains('open')) return;
+      if (nav.contains(event.target) || toggle.contains(event.target)) return;
+      closeMenu();
+    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('open')) closeMenu(true);
       if (event.key !== 'Tab' || !nav.classList.contains('open')) return;
@@ -111,18 +119,7 @@
     }
   }
 
-  /* Restrained desktop-only tilt. Layout never depends on it. */
-  if (!reducedMotion.matches && window.matchMedia('(pointer: fine) and (min-width: 901px)').matches) {
-    document.querySelectorAll('[data-tilt]').forEach((item) => {
-      item.addEventListener('pointermove', (event) => {
-        const rect = item.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        item.style.transform = `perspective(1100px) rotateX(${y * -2.2}deg) rotateY(${x * 2.8}deg)`;
-      });
-      item.addEventListener('pointerleave', () => { item.style.transform = ''; });
-    });
-  }
+  /* V23: static art direction replaces pointer tilt for steadier reading. */
 
   /* Delayed mobile conversion action. */
   if (body.classList.contains('sentinel-site')) {
@@ -161,18 +158,8 @@
     });
   }
 
-  /* One-per-session overture on larger screens only. */
-  const overture = document.querySelector('.cinematic-overture');
-  if (overture) {
-    const eligible = !reducedMotion.matches && window.matchMedia('(min-width: 901px)').matches;
-    let played = false;
-    try { played = sessionStorage.getItem('sentinel-overture') === '1'; } catch (_) {}
-    if (eligible && !played) {
-      overture.classList.add('is-playing');
-      try { sessionStorage.setItem('sentinel-overture', '1'); } catch (_) {}
-      window.setTimeout(() => overture.remove(), 1450);
-    } else overture.remove();
-  }
+  /* V23: opening overture removed. The page now opens directly on the message. */
+
 })();
 
 /* V20 Studio report comparison */

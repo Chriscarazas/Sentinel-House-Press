@@ -1067,3 +1067,614 @@ section:has(> .container.cta-panel) { display: none !important; }
     padding: 1.15rem !important;
   }
 }
+
+/* V22: responsive consolidation and mobile repair
+   One authoritative layer after several earlier design iterations. */
+@media (max-width: 1240px) {
+  body.sentinel-site {
+    padding-left: 0 !important;
+  }
+  body.sentinel-site::after {
+    inset: 0 !important;
+  }
+  .press-spine {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header-height: 74px;
+    --space-section: clamp(3.75rem, 11vw, 6rem);
+  }
+
+  html,
+  body.sentinel-site {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip !important;
+  }
+
+  body.sentinel-site main,
+  body.sentinel-site main > section,
+  body.sentinel-site main > div {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  body.sentinel-site .container {
+    width: min(calc(100% - 2rem), var(--content-wide, 84rem)) !important;
+    margin-inline: auto !important;
+  }
+
+  /* Every major page grid becomes a single readable column on mobile and tablet. */
+  body.sentinel-site main [class*="grid"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    min-width: 0 !important;
+  }
+
+  body.sentinel-site main [class*="grid"] > * {
+    min-width: 0 !important;
+    max-width: 100%;
+  }
+
+  body.sentinel-site .chapter-hero,
+  body.sentinel-site .v7-hero,
+  body.sentinel-site .plymouth-hero,
+  body.sentinel-site .studio-hero,
+  body.sentinel-site .studio-chapter,
+  body.sentinel-site .v7-commercial-hero {
+    min-height: 0 !important;
+    display: block !important;
+    padding-block: clamp(3.5rem, 10vw, 5.75rem) !important;
+  }
+
+  body.sentinel-site .chapter-grid,
+  body.sentinel-site .v7-hero-grid,
+  body.sentinel-site .plymouth-hero-grid,
+  body.sentinel-site .studio-hero-grid,
+  body.sentinel-site .studio-chapter-grid {
+    gap: clamp(2.25rem, 7vw, 4rem) !important;
+  }
+
+  body.sentinel-site :is(.chapter-copy, .v7-hero-copy, .plymouth-hero-copy, .studio-hero-copy) {
+    width: 100% !important;
+    max-width: 48rem !important;
+    min-width: 0 !important;
+  }
+
+  body.sentinel-site :is(.chapter-copy, .v7-hero-copy, .plymouth-hero-copy, .studio-hero-copy) h1,
+  body.sentinel-site .v7-commercial-hero h1 {
+    max-width: 100% !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    text-wrap: balance;
+  }
+
+  body.sentinel-site .chapter-visual {
+    width: min(100%, 38rem) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  body.sentinel-site :is(.exploded-mini, .proof-machine, .reading-room, .logo-monument, .submission-room, .publishers-desk) {
+    min-height: clamp(360px, 70vw, 500px) !important;
+  }
+
+  body.sentinel-site .case-hero-book.chapter-visual {
+    min-height: 0 !important;
+  }
+
+  body.sentinel-site .article-layout,
+  body.sentinel-site .cta-panel,
+  body.sentinel-site .plymouth-service-note .container,
+  body.sentinel-site .studio-project-form {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  body.sentinel-site .article-related {
+    position: static !important;
+    top: auto !important;
+    margin-top: 2rem;
+  }
+
+  /* Rows that formerly forced narrow label columns. */
+  body.sentinel-site .service-ledger .service-row,
+  body.sentinel-site .v7-service-card dl div,
+  body.sentinel-site .v7-case-specs div,
+  body.sentinel-site .control-ledger > div,
+  body.sentinel-site .responsibility-ledger > div,
+  body.sentinel-site .brand-ledger > div,
+  body.sentinel-site .v8-orientation-notes > div,
+  body.sentinel-site .v8-credibility-notes > div,
+  body.sentinel-site .studio-flagship-list a,
+  body.sentinel-site .studio-process-long li {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .65rem !important;
+  }
+
+  body.sentinel-site .service-ledger .service-row {
+    display: grid !important;
+    padding: 2rem 0 !important;
+  }
+
+  body.sentinel-site .service-ledger .service-row .index {
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+
+  body.sentinel-site :is(.v7-service-card dl, .v7-case-specs, .control-ledger, .responsibility-ledger) :is(dt, dd, strong, p, span),
+  body.sentinel-site .studio-flagship-list a > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+  }
+
+  body.sentinel-site .v7-process-list li,
+  body.sentinel-site .v8-next-steps li,
+  body.sentinel-site .studio-process-grid li,
+  body.sentinel-site .studio-form-grid li {
+    grid-template-columns: 2.5rem minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  /* Homepage repair. */
+  body.home-page .v7-hero-grid,
+  body.home-page .v7-case-grid,
+  body.home-page .v7-process-grid,
+  body.home-page .plymouth-home-grid,
+  body.home-page .v8-orientation-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.home-page .v7-process-intro {
+    position: static !important;
+    top: auto !important;
+  }
+
+  body.home-page .v7-process-list {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.home-page .v7-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
+
+  body.home-page .v7-facts > div {
+    min-width: 0 !important;
+  }
+
+  body.home-page .v7-facts dd {
+    overflow-wrap: anywhere !important;
+  }
+
+  body.home-page .v7-cover-stage {
+    width: min(72vw, 340px) !important;
+    margin-inline: auto !important;
+  }
+
+  body.home-page .v7-rights {
+    min-height: 0 !important;
+  }
+
+  body.home-page .v7-fit-grid > div {
+    min-height: 0 !important;
+  }
+
+  body.home-page .v7-fit-grid ul {
+    margin: 2rem 0 !important;
+  }
+
+  body.home-page .plymouth-home-art {
+    width: 100% !important;
+  }
+
+  body.home-page .plymouth-panorama {
+    transform: none !important;
+  }
+
+  body.sentinel-site .v8-trust-strip {
+    padding-block: 0 !important;
+  }
+
+  body.sentinel-site .v8-trust-strip ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.sentinel-site .v8-trust-strip li {
+    min-width: 0 !important;
+    border-bottom: 1px solid rgba(23,23,20,.13);
+  }
+
+  body.sentinel-site .studio-quicklink .container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+
+  body.sentinel-site .v8-service-cta {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  body.sentinel-site .v8-service-cta .button {
+    width: 100%;
+  }
+
+  body.sentinel-site .plymouth-landmark-grid figure {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    min-height: 0 !important;
+  }
+
+  body.sentinel-site .plymouth-landmark-grid figure img {
+    aspect-ratio: 4 / 3;
+    height: auto !important;
+  }
+
+  body.sentinel-site .archive-gallery {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: none !important;
+  }
+
+  body.sentinel-site .archive-gallery figure {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    margin-top: 0 !important;
+  }
+
+  body.sentinel-site .editorial-article {
+    grid-column: auto !important;
+    margin-top: 0 !important;
+    min-height: 0 !important;
+  }
+
+  body.sentinel-site .process-margin {
+    position: static !important;
+    top: auto !important;
+  }
+
+  body.sentinel-site .small-design-number {
+    font-size: clamp(6rem, 30vw, 10rem) !important;
+    line-height: .7 !important;
+  }
+
+  body.sentinel-site .small-design-copy {
+    padding-top: 0 !important;
+  }
+
+  body.sentinel-site .founder-mark {
+    width: min(100%, 30rem);
+  }
+
+  body.sentinel-site .footer-base {
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  body.sentinel-site {
+    font-size: 16.5px;
+  }
+
+  body.sentinel-site .container {
+    width: min(calc(100% - 1.5rem), var(--content-wide, 84rem)) !important;
+  }
+
+  body.sentinel-site main > section:not(.chapter-hero):not(.v7-hero):not(.plymouth-hero):not(.studio-hero):not(.studio-chapter):not(.v7-commercial-hero) {
+    padding-block: clamp(3.25rem, 13vw, 5rem) !important;
+  }
+
+  body.sentinel-site :is(.chapter-copy, .v7-hero-copy, .plymouth-hero-copy, .studio-hero-copy) h1,
+  body.sentinel-site .v7-commercial-hero h1,
+  body.sentinel-site.page-about .chapter-copy h1,
+  body.sentinel-site.page-contact .chapter-copy h1,
+  body.sentinel-site.page-plymouth .chapter-copy h1 {
+    font-size: clamp(2.75rem, 13vw, 4.35rem) !important;
+    line-height: .91 !important;
+    letter-spacing: -.045em !important;
+    max-width: 100% !important;
+  }
+
+  body.sentinel-site :is(.section-heading, .v7-section-heading, .v7-case-copy, .v7-process-intro, .plymouth-home-copy, .studio-visual-heading, .buried-copy) h2,
+  body.sentinel-site .strategy-quote h2,
+  body.sentinel-site .decision-line p,
+  body.sentinel-site .founder-copy h2,
+  body.sentinel-site .handoff-copy h2,
+  body.sentinel-site .control-promise h2,
+  body.sentinel-site .small-by-design h2,
+  body.sentinel-site .plymouth-landmarks-heading h2,
+  body.sentinel-site .plymouth-context h2 {
+    font-size: clamp(2.35rem, 11vw, 3.8rem) !important;
+    line-height: .95 !important;
+    letter-spacing: -.04em !important;
+    max-width: 100% !important;
+  }
+
+  body.sentinel-site .eyebrow {
+    font-size: .68rem !important;
+    line-height: 1.45 !important;
+    letter-spacing: .12em !important;
+  }
+
+  body.sentinel-site .hero-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .8rem !important;
+    width: 100%;
+  }
+
+  body.sentinel-site .hero-actions .button,
+  body.sentinel-site .hero-actions .text-link {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.home-page .v7-hero {
+    padding-top: 3rem !important;
+  }
+
+  body.home-page .v7-book-build {
+    display: block !important;
+    width: min(78vw, 320px) !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    margin: 2rem auto 0 !important;
+  }
+
+  body.home-page .v7-manuscript,
+  body.home-page .v7-book-spine,
+  body.home-page .v7-hero-index {
+    display: none !important;
+  }
+
+  body.home-page .v7-book-face {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: var(--ink) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  body.home-page .v7-book-face .v8-hero-cover {
+    width: 100% !important;
+    max-height: none !important;
+    transform: none !important;
+  }
+
+  body.home-page .v7-book-face > span {
+    display: block !important;
+    margin-top: .8rem !important;
+    text-align: center !important;
+    color: var(--muted) !important;
+  }
+
+  body.sentinel-site .v8-trust-strip ul {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.sentinel-site .v8-trust-strip li {
+    padding: 1.15rem 0 !important;
+    border-right: 0 !important;
+  }
+
+  body.home-page .v7-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.home-page .v7-facts div {
+    padding: 1rem !important;
+  }
+
+  body.home-page .v7-process-list li {
+    padding-block: 1.5rem !important;
+  }
+
+  body.home-page .v7-fit-grid li {
+    font-size: clamp(1.35rem, 6.5vw, 1.8rem) !important;
+  }
+
+  body.sentinel-site .v7-service-card {
+    padding: 1.4rem !important;
+  }
+
+  body.sentinel-site .v7-service-card h2 {
+    font-size: clamp(2.2rem, 11vw, 3.2rem) !important;
+    line-height: .94 !important;
+  }
+
+  body.sentinel-site .v7-service-card dl div,
+  body.sentinel-site .v7-case-specs div,
+  body.sentinel-site .control-ledger > div,
+  body.sentinel-site .responsibility-ledger > div,
+  body.sentinel-site .brand-ledger > div,
+  body.sentinel-site .v8-orientation-notes > div,
+  body.sentinel-site .v8-credibility-notes > div {
+    padding-block: 1rem !important;
+  }
+
+  body.sentinel-site .control-ledger strong,
+  body.sentinel-site .brand-ledger strong {
+    font-size: clamp(1.45rem, 7vw, 2rem) !important;
+  }
+
+  body.sentinel-site :is(.exploded-mini, .proof-machine, .reading-room, .logo-monument, .submission-room, .publishers-desk) {
+    min-height: 360px !important;
+  }
+
+  body.sentinel-site .proof-page,
+  body.sentinel-site .submission-sheet {
+    width: 92% !important;
+    min-height: 360px !important;
+    padding: 1.5rem !important;
+    transform: none !important;
+  }
+
+  body.sentinel-site .proof-page p,
+  body.sentinel-site .submission-sheet p {
+    margin-top: 4.5rem !important;
+    font-size: clamp(2rem, 10vw, 3.2rem) !important;
+  }
+
+  body.sentinel-site .red-pencil {
+    right: 4% !important;
+    height: 380px !important;
+  }
+
+  body.sentinel-site .handoff-object {
+    min-height: 470px !important;
+  }
+
+  body.sentinel-site .handoff-layer {
+    left: 0 !important;
+    right: 0 !important;
+    padding: 1.25rem !important;
+  }
+
+  body.sentinel-site .handoff-layer span {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+
+  body.sentinel-site .v8-investment-grid article,
+  body.sentinel-site .package-grid div,
+  body.sentinel-site .author-type-grid article,
+  body.sentinel-site .plymouth-values-grid article {
+    min-height: 0 !important;
+  }
+
+  body.sentinel-site .studio-flagship-list a {
+    padding-block: 1.35rem !important;
+  }
+
+  body.sentinel-site .studio-flagship-list a::after {
+    display: none !important;
+  }
+
+  body.sentinel-site .mobile-manuscript-cta {
+    left: .75rem !important;
+    right: .75rem !important;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-header .brand-full-logo {
+    width: 104px !important;
+  }
+
+  .site-header .division-switcher {
+    font-size: .53rem !important;
+    letter-spacing: .07em !important;
+  }
+
+  body.home-page .v7-facts {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* V22.1 mobile finish: contain decorative elements without sacrificing the composition. */
+@media (max-width: 640px) {
+  body.sentinel-site .compass-watermark {
+    display: none !important;
+  }
+
+  body.page-about .logo-monument span {
+    right: 1rem !important;
+    bottom: 1rem !important;
+    max-width: calc(100% - 2rem);
+    padding: .8rem 1rem !important;
+    transform: rotate(-2deg) !important;
+    white-space: normal;
+    text-align: center;
+  }
+
+  body.page-contact .submission-room,
+  body.page-process .handoff-object {
+    overflow: hidden !important;
+  }
+
+  body.page-contact .red-pencil {
+    right: 10% !important;
+    height: 340px !important;
+  }
+
+  body.page-process .handoff-layer {
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: end !important;
+    justify-items: start !important;
+    gap: .45rem !important;
+    transform: none !important;
+  }
+
+  body.page-process .handoff-layer small {
+    max-width: 100% !important;
+    font-size: .68rem !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+  }
+}
+
+/* V22.2 layout cleanup for the house divisions and process handoff. */
+body.sentinel-site .handoff-layer small {
+  flex: 0 0 min(12rem, 34%);
+  max-width: 12rem;
+  text-align: right;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  body.sentinel-site .division-panels {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.sentinel-site .division-panel {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.sentinel-site .division-panel {
+    padding: 1.5rem !important;
+  }
+
+  body.sentinel-site .division-panel h3 {
+    font-size: clamp(2.5rem, 12vw, 3.8rem) !important;
+    max-width: 10ch !important;
+  }
+
+  body.sentinel-site .division-panel b {
+    margin-top: 2.5rem !important;
+  }
+
+  body.page-process .handoff-layer small {
+    text-align: left !important;
+  }
+}
+
+/* V22.3 narrow-phone safeguards. */
+@media (max-width: 900px) {
+  body.sentinel-site .fit-ledger {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  body.page-process .handoff-layer span {
+    font-size: clamp(1.55rem, 8vw, 2.1rem) !important;
+    letter-spacing: -.025em !important;
+  }
+}
