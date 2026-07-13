@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource-variable/fraunces/standard-italic.css";
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
@@ -119,4 +120,28 @@ body {
     animation: none;
     opacity: 1;
   }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 0.8;
+  float: left;
+  padding-right: 0.6rem;
+  padding-top: 0.35rem;
+  color: var(--color-oxblood);
 }

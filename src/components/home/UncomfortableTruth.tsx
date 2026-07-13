@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
+import { PullQuote } from "@/components/ui/PullQuote";
 
 type Tone = "paper" | "black" | "blue" | "oxblood";
 
@@ -58,6 +59,7 @@ export function UncomfortableTruth() {
               key={el.label}
               as="li"
               delay={0.04 * i}
+              variant="mask"
               className={el.feature ? "col-span-2 row-span-2 sm:col-span-2" : "col-span-1 sm:col-span-2"}
             >
               <div
@@ -82,12 +84,10 @@ export function UncomfortableTruth() {
       </div>
 
       <div className="mx-auto max-w-5xl">
-        <Reveal delay={0.2}>
-          <p className="mt-20 max-w-xl border-l-2 border-oxblood pl-6 font-serif text-h3 leading-snug text-press-black/85">
-            The manuscript contains the possibility. The process creates the
-            book.
-          </p>
-        </Reveal>
+        <PullQuote className="mt-20 max-w-xl">
+          The manuscript contains the possibility. The process creates the
+          book.
+        </PullQuote>
       </div>
     </section>
   );

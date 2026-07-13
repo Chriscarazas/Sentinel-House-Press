@@ -3,6 +3,7 @@ import { Seo } from "@/components/Seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { PullQuote } from "@/components/ui/PullQuote";
 import { SITE_URL } from "@/lib/seo";
 import coverSrc from "@/assets/books/now-that-im-still-here-cover.webp";
 import cover480 from "@/assets/books/now-that-im-still-here-cover-480.webp";
@@ -46,7 +47,7 @@ export function Founder() {
         schema={personSchema}
       />
       <PageHero
-        number="04"
+        number="05"
         label="Founder"
         title="I built the publishing support I wish I had."
       />
@@ -69,14 +70,14 @@ export function Founder() {
 
           <div>
             <Reveal delay={0.06}>
-              <p className="text-lg leading-relaxed text-press-black/80">
+              <p className="drop-cap max-w-[38rem] text-lg leading-[1.75] text-press-black/80">
                 Sentinel House Press grew out of one project: taking my own
                 memoir, <em className="italic">Now That I&rsquo;m Still Here:
                 A Memoir of Ruin and Resurrection</em>, from manuscript to
                 market. I learned, the hard way, everything a serious book
                 actually requires between those two points.
               </p>
-              <p className="mt-6 leading-relaxed text-press-black/80">
+              <p className="mt-6 max-w-[38rem] leading-[1.75] text-press-black/80">
                 Independent publishing gives authors complete freedom. It
                 also gives them every problem at once. There was no shortage
                 of vendors willing to sell me one piece of the process. What
@@ -99,12 +100,10 @@ export function Founder() {
               </ul>
             </Reveal>
 
-            <Reveal delay={0.2}>
-              <p className="mt-10 max-w-xl border-l-2 border-oxblood pl-6 font-serif text-h3 leading-snug">
-                Independent authors were not lacking commitment. They were
-                lacking a trustworthy system.
-              </p>
-            </Reveal>
+            <PullQuote className="mt-10 max-w-xl">
+              Independent authors were not lacking commitment. They were
+              lacking a trustworthy system.
+            </PullQuote>
 
             <Reveal delay={0.26}>
               <p className="mt-6 max-w-xl leading-relaxed text-press-black/70">
@@ -126,16 +125,11 @@ export function Founder() {
       </section>
 
       <section className="border-b border-press-black/10 bg-press-black px-6 py-20 text-paper sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <p className="font-serif text-h2 leading-snug">
-              &ldquo;Your name goes on the cover. The work behind it should
-              deserve that.&rdquo;
-            </p>
-            <p className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-paper/50">
-              Christopher J. Carazas, Founder
-            </p>
-          </Reveal>
+        <div className="mx-auto max-w-3xl">
+          <PullQuote tone="inverse" center cite="Christopher J. Carazas, Founder">
+            Your name goes on the cover. The work behind it should deserve
+            that.
+          </PullQuote>
         </div>
       </section>
 

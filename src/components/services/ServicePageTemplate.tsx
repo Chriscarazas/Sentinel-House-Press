@@ -3,6 +3,7 @@ import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { PullQuote } from "@/components/ui/PullQuote";
 import { SITE_URL } from "@/lib/seo";
 
 type Tone = "paper" | "black" | "blue" | "oxblood";
@@ -138,11 +139,7 @@ export function ServicePageTemplate({ data }: { data: ServicePageData }) {
             ))}
           </ul>
 
-          <Reveal delay={0.1}>
-            <p className="mt-14 max-w-2xl border-l-2 border-press-black/20 pl-6 font-serif text-h3 leading-snug text-press-black/85">
-              {problem}
-            </p>
-          </Reveal>
+          <PullQuote className="mt-14 max-w-2xl">{problem}</PullQuote>
         </div>
       </section>
 

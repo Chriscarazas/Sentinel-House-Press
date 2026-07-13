@@ -72,7 +72,7 @@ export const buildTheEdition: ServicePageData = {
     "Authors who want KDP and IngramSpark set up correctly the first time",
   ],
   problem:
-    "A Word document is not a book. A professional edition requires dozens of design and production decisions most authors have never had to make, and most of them are invisible until they go wrong.",
+    "A Word document is not a book. A professional edition requires dozens of design and production decisions most authors have never made before. Most of them are invisible until they go wrong.",
   included: [
     "Cover direction and design coordination with a vetted designer",
     "Interior book design for print",
@@ -132,7 +132,7 @@ export const enterTheMarket: ServicePageData = {
     "Authors who need a website and marketing materials before publication day",
   ],
   problem:
-    "A published book is not the same as a discovered one. Retail listings, metadata, and launch timing decide whether readers ever find it, and none of that happens automatically.",
+    "A published book is not the same as a discovered one. Retail listings, metadata, and launch timing decide whether readers ever find it. None of that happens automatically.",
   included: [
     "Book-launch strategy and calendar",
     "Retailer listing optimization",

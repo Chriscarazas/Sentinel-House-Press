@@ -86,7 +86,7 @@ export function Process() {
         path="/process"
       />
       <PageHero
-        number="03"
+        number="04"
         label="Process"
         title="How a manuscript becomes a book."
         intro="Seven stages, always in this order, always with the author making the final call. Nothing is skipped, and nothing happens without your sign-off."

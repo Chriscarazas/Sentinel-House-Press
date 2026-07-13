@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
+import { PullQuote } from "@/components/ui/PullQuote";
 
 const work = [
   "Manuscript development",
@@ -63,12 +64,10 @@ export function FoundingStory() {
               </ul>
             </Reveal>
 
-            <Reveal delay={0.2}>
-              <p className="mt-8 max-w-xl border-l-2 border-oxblood pl-6 font-serif text-h3 leading-snug">
-                Independent authors were not lacking commitment. They were
-                lacking a trustworthy system.
-              </p>
-            </Reveal>
+            <PullQuote className="mt-8 max-w-xl">
+              Independent authors were not lacking commitment. They were
+              lacking a trustworthy system.
+            </PullQuote>
 
             <Reveal delay={0.26}>
               <p className="mt-6 max-w-xl leading-relaxed text-press-black/70">

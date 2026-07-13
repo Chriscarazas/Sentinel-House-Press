@@ -49,6 +49,7 @@ export function BestFitAuthors() {
                   key={item.label}
                   as="li"
                   delay={0.03 * i}
+                  variant="slideLeft"
                   className={item.feature ? "col-span-2" : "col-span-1"}
                 >
                   <div
@@ -77,6 +78,7 @@ export function BestFitAuthors() {
                   key={item.label}
                   as="li"
                   delay={0.03 * i}
+                  variant="slideRight"
                   className={item.feature ? "col-span-2" : "col-span-1"}
                 >
                   <div

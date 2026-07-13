@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { primaryNav } from "@/lib/nav";
 
 const social = [
   { label: "Instagram", href: "https://instagram.com" },
@@ -61,11 +62,13 @@ export function Footer() {
               Navigate
             </p>
             <ul className="mt-4 space-y-2 text-sm text-paper/75">
-              <li><Link className="hover:text-paper" to="/work">Work</Link></li>
-              <li><Link className="hover:text-paper" to="/services">Services</Link></li>
-              <li><Link className="hover:text-paper" to="/process">Process</Link></li>
-              <li><Link className="hover:text-paper" to="/about">About</Link></li>
-              <li><Link className="hover:text-paper" to="/resources">Resources</Link></li>
+              {primaryNav.map((item) => (
+                <li key={item.href}>
+                  <Link className="hover:text-paper" to={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

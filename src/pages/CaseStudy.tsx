@@ -4,6 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
 import { InkStamp } from "@/components/ui/InkStamp";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { PullQuote } from "@/components/ui/PullQuote";
 import { getCaseStudy } from "@/data/caseStudies";
 import { SITE_URL } from "@/lib/seo";
 import coverSrc from "@/assets/books/now-that-im-still-here-cover.webp";
@@ -154,11 +155,7 @@ export function CaseStudy() {
         </div>
 
         {study.authorNote && (
-          <Reveal delay={0.2}>
-            <p className="mx-auto mt-10 max-w-3xl border-l-2 border-oxblood pl-6 font-serif text-h3 leading-snug text-press-black/85">
-              {study.authorNote}
-            </p>
-          </Reveal>
+          <PullQuote className="mx-auto mt-10 max-w-3xl">{study.authorNote}</PullQuote>
         )}
       </section>
 

@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
+import { KnotIcon, PadlockIcon } from "@/components/ui/icons";
 
 export function FalseChoice() {
   return (
@@ -13,30 +14,33 @@ export function FalseChoice() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
-          <Reveal delay={0.05}>
+          <Reveal delay={0.05} variant="slideLeft">
             <div className="h-full border border-press-black/15 bg-paper p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-pencil">
+              <KnotIcon className="h-12 w-12 text-oxblood" />
+              <p className="mt-6 font-mono text-xs uppercase tracking-[0.25em] text-pencil">
                 Option One
               </p>
               <h3 className="mt-4 font-serif text-h3">Do everything alone.</h3>
               <p className="mt-4 leading-relaxed text-press-black/70">
                 The author manages editors, designers, formatters,
-                platforms, files, ISBNs, metadata, distribution, and launch,
-                usually all at once, and usually for the first time.
+                platforms, files, ISBNs, metadata, distribution, and launch.
+              </p>
+              <p className="mt-2 leading-relaxed text-press-black/70">
+                Usually all at once. Usually for the first time.
               </p>
             </div>
           </Reveal>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} variant="slideRight">
             <div className="h-full border border-press-black/15 bg-paper p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-pencil">
+              <PadlockIcon className="h-12 w-12 text-oxblood" />
+              <p className="mt-6 font-mono text-xs uppercase tracking-[0.25em] text-pencil">
                 Option Two
               </p>
               <h3 className="mt-4 font-serif text-h3">Hand over control.</h3>
               <p className="mt-4 leading-relaxed text-press-black/70">
-                The author risks unclear costs, rights concessions, royalty
-                deductions, vague promises, or production that looks like
-                everyone else's.
+                Unclear costs. Rights concessions. Royalty deductions. Vague
+                promises. Production that looks like everyone else's.
               </p>
             </div>
           </Reveal>

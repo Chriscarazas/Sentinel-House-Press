@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { EASE_EDITORIAL } from "@/lib/motion";
 import { InkStamp } from "@/components/ui/InkStamp";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { Marquee } from "@/components/ui/Marquee";
+
+const capabilities = ["Editing", "Design", "Formatting", "Metadata", "Distribution", "Launch"];
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -58,36 +61,43 @@ export function Hero() {
           initial={reduceMotion ? undefined : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.6, ease: EASE_EDITORIAL }}
-          className="mt-10 grid gap-8 border-t border-press-black/15 pt-8 lg:grid-cols-[1fr_auto] lg:items-end"
+          className="mt-10 border-t border-press-black/15 pt-8"
         >
-          <div className="max-w-xl">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-proof-blue">
-              Editing &middot; Design &middot; Formatting &middot; Metadata &middot; Distribution &middot; Launch
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-press-black/80">
-              Independent publishing gives authors control. It also gives
-              them every problem at once. Sentinel House Press helps serious
-              authors turn promising manuscripts into professionally edited,
-              beautifully designed, market-ready books, without surrendering
-              their rights, royalties, publishing accounts, or voice.
-            </p>
-          </div>
+          <Marquee
+            items={capabilities}
+            className="font-mono text-xs uppercase tracking-[0.2em] text-proof-blue"
+          />
 
-          <div className="flex flex-wrap items-center gap-6">
-            <Magnetic>
-              <Link
-                to="/contact"
-                className="inline-block border border-press-black bg-press-black px-8 py-4 font-sans text-sm font-medium text-paper transition-colors hover:border-oxblood hover:bg-oxblood"
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-xl">
+              <p className="text-lg leading-relaxed text-press-black/80">
+                Independent publishing gives authors control. It also gives
+                them every problem at once.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-press-black/80">
+                Sentinel House Press turns promising manuscripts into
+                professionally edited, beautifully designed, market-ready
+                books. Without surrendering your rights. Your royalties.
+                Your publishing accounts. Or your voice.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-6">
+              <Magnetic>
+                <Link
+                  to="/contact"
+                  className="inline-block border border-press-black bg-press-black px-8 py-4 font-sans text-sm font-medium text-paper transition-colors hover:border-oxblood hover:bg-oxblood"
+                >
+                  Build the book
+                </Link>
+              </Magnetic>
+              <a
+                href="#process"
+                className="font-sans text-sm font-medium text-press-black underline decoration-pencil underline-offset-4 transition-colors hover:text-oxblood hover:decoration-oxblood"
               >
-                Build the book
-              </Link>
-            </Magnetic>
-            <a
-              href="#process"
-              className="font-sans text-sm font-medium text-press-black underline decoration-pencil underline-offset-4 transition-colors hover:text-oxblood hover:decoration-oxblood"
-            >
-              Explore the process
-            </a>
+                Explore the process
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

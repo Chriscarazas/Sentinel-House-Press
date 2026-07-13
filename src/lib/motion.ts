@@ -16,6 +16,43 @@ export const fadeIn: Variants = {
   visible: { opacity: 1, transition: { duration: 0.6, ease: EASE_EDITORIAL } },
 };
 
+export const maskWipe: Variants = {
+  hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
+  visible: {
+    clipPath: "inset(0 0% 0 0)",
+    opacity: 1,
+    transition: { duration: 0.8, ease: EASE_EDITORIAL },
+  },
+};
+
+export const slideLeft: Variants = {
+  hidden: { opacity: 0, x: -48 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: EASE_EDITORIAL },
+  },
+};
+
+export const slideRight: Variants = {
+  hidden: { opacity: 0, x: 48 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: EASE_EDITORIAL },
+  },
+};
+
+export const rise: Variants = {
+  hidden: { opacity: 0, y: 24, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.7, ease: EASE_EDITORIAL },
+  },
+};
+
 export const stagger = (staggerChildren = 0.12, delayChildren = 0): Variants => ({
   hidden: {},
   visible: {

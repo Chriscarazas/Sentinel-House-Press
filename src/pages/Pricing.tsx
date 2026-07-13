@@ -26,7 +26,7 @@ export function Pricing() {
         path="/pricing"
       />
       <PageHero
-        number="05"
+        number="03"
         label="Starting Investment"
         title="Clear scope. Honest pricing."
         intro="Every project is scoped individually based on manuscript length, condition, and goals. These are starting points, not final quotes, so you know roughly what you're looking at before the first conversation."

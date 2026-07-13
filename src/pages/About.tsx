@@ -14,10 +14,10 @@ export function About() {
         path="/about"
       />
       <PageHero
-        number="04"
+        number="05"
         label="About"
         title="The standards of a publishing house. The control of independent publishing."
-        intro="Sentinel House Press is a founder-led publishing studio in Plymouth, Massachusetts. We help serious independent authors develop, edit, design, produce, publish, and launch professional books, without asking them to give up their rights, royalties, publishing accounts, or voice."
+        intro="Sentinel House Press is a founder-led publishing studio in Plymouth, Massachusetts. We help serious independent authors develop, edit, design, produce, publish, and launch professional books. Without asking them to give up their rights. Their royalties. Their publishing accounts. Or their voice."
       />
 
       <section className="border-b border-press-black/10 px-6 py-20 sm:px-8 sm:py-28">
@@ -27,7 +27,7 @@ export function About() {
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-oxblood">
                 What we are
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-press-black/80">
+              <p className="mt-4 text-lg leading-[1.75] text-press-black/80">
                 A professional publishing studio. We provide editorial
                 expertise, design direction, production management, and
                 strategic counsel, the same standards a traditional
@@ -39,7 +39,7 @@ export function About() {
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-oxblood">
                 What we are not
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-press-black/80">
+              <p className="mt-4 text-lg leading-[1.75] text-press-black/80">
                 A vanity press, a rights-acquiring hybrid publisher, or a
                 collection of freelancers pretending to be a system. We do
                 not take ownership of your work at any point in the process.
@@ -63,7 +63,7 @@ export function About() {
               </h2>
             </Reveal>
             <Reveal delay={0.08}>
-              <p className="text-lg leading-relaxed text-press-black/80">
+              <p className="max-w-md text-lg leading-[1.75] text-press-black/80">
                 Sentinel House Press grew out of one project: taking a
                 personal memoir from manuscript to market, and learning
                 everything a serious book actually requires along the way.

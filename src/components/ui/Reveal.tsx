@@ -1,15 +1,30 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { fadeUp, viewportOnce } from "@/lib/motion";
+import { fadeUp, maskWipe, slideLeft, slideRight, rise, viewportOnce } from "@/lib/motion";
+
+const VARIANTS = {
+  fade: fadeUp,
+  mask: maskWipe,
+  slideLeft,
+  slideRight,
+  rise,
+};
 
 interface RevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
   as?: "div" | "span" | "li";
+  variant?: keyof typeof VARIANTS;
 }
 
-export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = "div",
+  variant = "fade",
+}: RevealProps) {
   const reduceMotion = useReducedMotion();
   const Component = motion[as];
 
@@ -21,7 +36,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   return (
     <Component
       className={className}
-      variants={fadeUp}
+      variants={VARIANTS[variant]}
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}

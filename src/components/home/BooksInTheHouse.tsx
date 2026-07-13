@@ -21,7 +21,7 @@ export function BooksInTheHouse() {
           </h2>
         </Reveal>
 
-        <Reveal delay={0.08}>
+        <Reveal delay={0.08} variant="rise">
           <motion.div
             whileHover={reduceMotion ? undefined : { rotate: -0.6, y: -4 }}
             transition={{ duration: 0.4, ease: EASE_EDITORIAL }}

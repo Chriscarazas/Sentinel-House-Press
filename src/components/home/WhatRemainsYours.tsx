@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { PullQuote } from "@/components/ui/PullQuote";
 
 const retain: { label: string; feature?: boolean }[] = [
   { label: "Copyright" },
@@ -89,12 +90,10 @@ export function WhatRemainsYours() {
           </div>
         </div>
 
-        <Reveal delay={0.2}>
-          <p className="mt-16 max-w-xl border-l-2 border-oxblood pl-6 font-serif text-h3 leading-snug">
-            You should not have to surrender control in order to receive
-            professional support.
-          </p>
-        </Reveal>
+        <PullQuote tone="inverse" className="mt-16 max-w-xl">
+          You should not have to surrender control in order to receive
+          professional support.
+        </PullQuote>
 
         <Reveal delay={0.28}>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-paper/50">
