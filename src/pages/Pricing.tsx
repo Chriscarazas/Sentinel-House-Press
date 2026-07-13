@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { Seo } from "@/components/Seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -17,7 +19,24 @@ const TONE_STYLES: Record<string, string> = {
   oxblood: "bg-oxblood text-paper border-oxblood",
 };
 
+const TONE_BUTTON: Record<string, string> = {
+  paper: "border-press-black/30 hover:border-oxblood hover:text-oxblood",
+  black: "border-paper/30 hover:border-paper hover:text-paper",
+  oxblood: "border-paper/40 hover:border-paper hover:text-paper",
+};
+
 export function Pricing() {
+  const [revealed, setRevealed] = useState<Set<string>>(new Set());
+
+  const toggle = (key: string) => {
+    setRevealed((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
   return (
     <>
       <Seo
@@ -29,34 +48,65 @@ export function Pricing() {
         number="03"
         label="Starting Investment"
         title="Clear scope. Honest pricing."
-        intro="Every project is scoped individually based on manuscript length, condition, and goals. These are starting points, not final quotes, so you know roughly what you're looking at before the first conversation."
+        intro="Every project is scoped individually based on manuscript length, condition, and goals. Reveal a pathway below for a starting range, or skip straight to a real quote."
       />
 
       <section className="border-b border-press-black/10 px-6 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
-          {packages.map((p, i) => (
-            <Reveal key={p.data.numeral} delay={0.05 * i}>
-              <div className={`flex h-full flex-col justify-between border p-7 ${TONE_STYLES[p.tone]}`}>
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] opacity-60">
-                    {p.data.numeral} &middot; {p.data.title}
-                  </p>
-                  <p className="mt-4 font-serif text-3xl leading-tight">
-                    {p.data.investment.split(".")[0]}.
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed opacity-75">
-                    {p.data.investment.split(".").slice(1).join(".").trim()}
-                  </p>
+          {packages.map((p, i) => {
+            const isOpen = revealed.has(p.data.numeral);
+            return (
+              <Reveal key={p.data.numeral} delay={0.05 * i}>
+                <div className={`flex h-full flex-col justify-between border p-7 ${TONE_STYLES[p.tone]}`}>
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] opacity-60">
+                      {p.data.numeral} &middot; {p.data.title}
+                    </p>
+                    <p className="mt-4 font-serif text-2xl leading-snug">
+                      {p.data.headline}
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() => toggle(p.data.numeral)}
+                      aria-expanded={isOpen}
+                      className={`mt-6 inline-flex items-center gap-2 border-b font-mono text-xs uppercase tracking-[0.15em] opacity-80 transition-colors hover:opacity-100 ${TONE_BUTTON[p.tone]}`}
+                    >
+                      {isOpen ? "Hide starting investment" : "Show starting investment"}
+                      <span aria-hidden className={`inline-block transition-transform ${isOpen ? "rotate-180" : ""}`}>
+                        &darr;
+                      </span>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="mt-4 font-serif text-2xl leading-tight">
+                            {p.data.investment.split(".")[0]}.
+                          </p>
+                          <p className="mt-3 text-sm leading-relaxed opacity-75">
+                            {p.data.investment.split(".").slice(1).join(".").trim()}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <Link
+                    to={p.href}
+                    className="mt-8 inline-block font-sans text-sm font-medium underline underline-offset-4 opacity-90 hover:opacity-100"
+                  >
+                    See full scope &rarr;
+                  </Link>
                 </div>
-                <Link
-                  to={p.href}
-                  className="mt-8 inline-block font-sans text-sm font-medium underline underline-offset-4 opacity-90 hover:opacity-100"
-                >
-                  See full scope &rarr;
-                </Link>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

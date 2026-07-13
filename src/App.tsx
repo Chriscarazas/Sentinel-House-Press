@@ -1,7 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Placeholder } from "@/pages/Placeholder";
 import { Home } from "@/pages/Home";
 
 const Services = lazy(() => import("@/pages/Services").then((m) => ({ default: m.Services })));
@@ -28,6 +27,7 @@ const Terms = lazy(() => import("@/pages/Terms").then((m) => ({ default: m.Terms
 const Accessibility = lazy(() =>
   import("@/pages/Accessibility").then((m) => ({ default: m.Accessibility })),
 );
+const NotFound = lazy(() => import("@/pages/NotFound").then((m) => ({ default: m.NotFound })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -60,7 +60,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/accessibility" element={<Accessibility />} />
-          <Route path="*" element={<Placeholder title="Page not found" />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Layout>
