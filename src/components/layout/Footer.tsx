@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { primaryNav } from "@/lib/nav";
 
-const social = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-];
-
 const legal = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
@@ -16,7 +11,7 @@ export function Footer() {
   return (
     <footer className="border-t border-paper/10 bg-press-black text-paper">
       <div className="mx-auto max-w-[100rem] px-6 py-16 sm:px-8 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <p className="font-serif text-2xl">Sentinel House Press</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/65">
@@ -67,26 +62,6 @@ export function Footer() {
                   <Link className="hover:text-paper" to={item.href}>
                     {item.label}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-oxblood">
-              Elsewhere
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-paper/75">
-              {social.map((s) => (
-                <li key={s.label}>
-                  <a
-                    className="hover:text-paper"
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {s.label}
-                  </a>
                 </li>
               ))}
             </ul>
